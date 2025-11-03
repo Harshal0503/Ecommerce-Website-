@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechStore - AI-Powered E-commerce</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    animation: {
+                        'fade-in': 'fadeIn 0.5s ease-in-out',
+                        'slide-up': 'slideUp 0.6s ease-out',
+                        'slide-down': 'slideDown 0.6s ease-out',
+                        'bounce-in': 'bounceIn 0.8s ease-out',
+                        'pulse-slow': 'pulse 3s infinite',
+                        'float': 'float 3s ease-in-out infinite',
+                        'spin-slow': 'spin 3s linear infinite',
+                        'wiggle': 'wiggle 1s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' }
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(30px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' }
+                        },
+                        slideDown: {
+                            '0%': { transform: 'translateY(-30px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' }
+                        },
+                        bounceIn: {
+                            '0%': { transform: 'scale(0.3)', opacity: '0' },
+                            '50%': { transform: 'scale(1.05)' },
+                            '70%': { transform: 'scale(0.9)' },
+                            '100%': { transform: 'scale(1)', opacity: '1' }
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-20px)' }
+                        },
+                        wiggle: {
+                            '0%, 100%': { transform: 'rotate(-3deg)' },
+                            '50%': { transform: 'rotate(3deg)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header fixed top-0 left-0 right-0 z-50 transition-all duration-300 animate-slide-down">
+        <nav class="nav flex justify-between items-center px-8 py-4">
+            <div class="nav-brand">
+                <h1 class="logo text-3xl font-bold bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent dark:from-blue-400 dark:to-purple-400 animate-fade-in">TechStore</h1>
+            </div>
+            <div class="nav-links hidden md:flex gap-8">
+                <a href="#home" class="nav-link text-gray-700 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 transition-all duration-300 hover:-translate-y-1 relative group">Home</a>
+                <a href="#products" class="nav-link text-gray-700 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 transition-all duration-300 hover:-translate-y-1 relative group">Products</a>
+                <a href="#about" class="nav-link text-gray-700 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 transition-all duration-300 hover:-translate-y-1 relative group">About</a>
+                <a href="#contact" class="nav-link text-gray-700 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 transition-all duration-300 hover:-translate-y-1 relative group">Contact</a>
+            </div>
+            <div class="nav-actions flex gap-4 items-center">
+                <button class="search-btn p-2 rounded-full hover:bg-blue-100 dark:hover:bg-gray-800 transition-all duration-300 hover:scale-110">
+                    <i class="fas fa-search text-gray-700 dark:text-gray-300"></i>
+                </button>
+                <button class="theme-toggle p-2 rounded-full hover:bg-blue-100 dark:hover:bg-gray-800 transition-all duration-300 hover:scale-110" id="themeToggle">
+                    <i class="fas fa-moon text-gray-700 dark:text-gray-300 dark:hidden"></i>
+                    <i class="fas fa-sun text-gray-700 dark:text-gray-300 hidden dark:block"></i>
+                </button>
+                <button class="cart-btn relative p-2 rounded-full hover:bg-blue-100 dark:hover:bg-gray-800 transition-all duration-300 hover:scale-110" id="cartBtn">
+                    <i class="fas fa-shopping-cart text-gray-700 dark:text-gray-300"></i>
+                    <span class="cart-count absolute -top-2 -right-2 bg-red-500 text-white rounded-full w-5 h-5 text-xs flex items-center justify-center animate-bounce-in" id="cartCount">0</span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero bg-gradient-to-br from-blue-500 via-purple-600 to-indigo-700 dark:from-gray-900 dark:via-blue-900 dark:to-purple-900 min-h-screen flex items-center justify-between px-8 pt-24 pb-12 text-white relative overflow-hidden" id="home">
+        <div class="hero-content flex-1 max-w-2xl animate-slide-up">
+            <h1 class="hero-title text-6xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-white to-blue-100 bg-clip-text text-transparent animate-fade-in">Welcome to TechStore</h1>
+            <p class="hero-subtitle text-xl mb-8 opacity-90 animate-fade-in" style="animation-delay: 0.2s;">Discover the latest technology with AI-powered recommendations</p>
+            <button class="cta-btn bg-gradient-to-r from-red-500 to-orange-500 hover:from-red-600 hover:to-orange-600 text-white px-8 py-4 rounded-full font-semibold text-lg shadow-2xl hover:shadow-red-500/25 transition-all duration-300 hover:-translate-y-2 hover:scale-105 animate-bounce-in" style="animation-delay: 0.4s;">
+                Shop Now
+            </button>
+        </div>
+        <div class="hero-image flex-1 flex justify-center items-center animate-slide-up" style="animation-delay: 0.3s;">
+            <div class="floating-card w-64 h-64 bg-white/10 backdrop-blur-lg rounded-3xl flex items-center justify-center text-6xl text-white border border-white/20 animate-float shadow-2xl">
+                <i class="fas fa-laptop animate-pulse-slow"></i>
+            </div>
+        </div>
+        <!-- Background decoration -->
+        <div class="absolute inset-0 overflow-hidden pointer-events-none">
+            <div class="absolute top-20 left-20 w-32 h-32 bg-white/5 rounded-full animate-pulse-slow"></div>
+            <div class="absolute bottom-20 right-20 w-24 h-24 bg-white/5 rounded-full animate-pulse-slow" style="animation-delay: 1s;"></div>
+            <div class="absolute top-1/2 left-10 w-16 h-16 bg-white/5 rounded-full animate-pulse-slow" style="animation-delay: 2s;"></div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products bg-white dark:bg-gray-900 py-20 px-8" id="products">
+        <div class="container max-w-7xl mx-auto">
+            <h2 class="section-title text-center text-5xl font-bold mb-16 bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 bg-clip-text text-transparent animate-fade-in">Featured Products</h2>
+            <div class="products-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="productsGrid">
+                <!-- Products will be dynamically loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-sidebar fixed top-0 -right-96 w-96 h-full bg-white dark:bg-gray-800 shadow-2xl transition-all duration-300 z-50 flex flex-col" id="cartSidebar">
+        <div class="cart-header p-6 border-b border-gray-200 dark:border-gray-700 flex justify-between items-center">
+            <h3 class="text-2xl font-bold text-gray-800 dark:text-white">Shopping Cart</h3>
+            <button class="close-cart p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-200" id="closeCart">
+                <i class="fas fa-times text-gray-600 dark:text-gray-300"></i>
+            </button>
+        </div>
+        <div class="cart-items flex-1 p-4 overflow-y-auto" id="cartItems">
+            <!-- Cart items will be dynamically loaded here -->
+        </div>
+        <div class="cart-footer p-6 border-t border-gray-200 dark:border-gray-700">
+            <div class="cart-total text-2xl font-bold text-gray-800 dark:text-white mb-4 text-center">
+                Total: $<span id="cartTotal">0.00</span>
+            </div>
+            <button class="checkout-btn w-full bg-gradient-to-r from-red-500 to-orange-500 hover:from-red-600 hover:to-orange-600 text-white py-4 rounded-lg font-semibold text-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">Checkout</button>
+        </div>
+    </div>
+
+    <!-- AI Chatbot -->
+    <div class="chatbot-container fixed bottom-8 right-8 z-40" id="chatbotContainer">
+        <div class="chatbot-toggle w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white text-2xl cursor-pointer shadow-2xl hover:shadow-blue-500/25 transition-all duration-300 hover:scale-110 animate-pulse-slow" id="chatbotToggle">
+            <i class="fas fa-robot"></i>
+        </div>
+        <div class="chatbot-window absolute bottom-20 right-0 w-80 h-96 bg-white dark:bg-gray-800 rounded-2xl shadow-2xl hidden flex-col overflow-hidden border border-gray-200 dark:border-gray-700" id="chatbotWindow">
+            <div class="chatbot-header bg-gradient-to-r from-blue-500 to-purple-600 text-white p-4 flex justify-between items-center">
+                <h4 class="text-lg font-semibold">AI Assistant</h4>
+                <button class="close-chatbot p-2 rounded-full hover:bg-white/20 transition-colors duration-200" id="closeChatbot">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="chatbot-messages flex-1 p-4 overflow-y-auto space-y-3" id="chatbotMessages">
+                <div class="message bot-message">
+                    <div class="message-content bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-white p-3 rounded-2xl rounded-tl-sm max-w-xs">
+                        Hello! I'm your AI shopping assistant. How can I help you today?
+                    </div>
+                </div>
+            </div>
+            <div class="chatbot-input p-4 border-t border-gray-200 dark:border-gray-700 flex gap-2">
+                <input type="text" id="chatInput" placeholder="Ask me anything about our products..." class="flex-1 p-3 border border-gray-300 dark:border-gray-600 rounded-full bg-white dark:bg-gray-700 text-gray-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                <button id="sendMessage" class="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-full flex items-center justify-center hover:scale-110 transition-transform duration-200">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer bg-gray-900 dark:bg-gray-800 text-white py-16 px-8">
+        <div class="container max-w-7xl mx-auto">
+            <div class="footer-content grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+                <div class="footer-section animate-fade-in">
+                    <h3 class="text-2xl font-bold text-blue-400 mb-4">TechStore</h3>
+                    <p class="text-gray-300">Your trusted partner in technology and innovation.</p>
+                </div>
+                <div class="footer-section animate-fade-in" style="animation-delay: 0.1s;">
+                    <h4 class="text-lg font-semibold text-blue-400 mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="text-gray-300 hover:text-blue-400 transition-colors duration-300">Home</a></li>
+                        <li><a href="#products" class="text-gray-300 hover:text-blue-400 transition-colors duration-300">Products</a></li>
+                        <li><a href="#about" class="text-gray-300 hover:text-blue-400 transition-colors duration-300">About</a></li>
+                        <li><a href="#contact" class="text-gray-300 hover:text-blue-400 transition-colors duration-300">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section animate-fade-in" style="animation-delay: 0.2s;">
+                    <h4 class="text-lg font-semibold text-blue-400 mb-4">Support</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-300 hover:text-blue-400 transition-colors duration-300">FAQ</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-blue-400 transition-colors duration-300">Shipping</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-blue-400 transition-colors duration-300">Returns</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-blue-400 transition-colors duration-300">Support</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section animate-fade-in" style="animation-delay: 0.3s;">
+                    <h4 class="text-lg font-semibold text-blue-400 mb-4">Connect</h4>
+                    <div class="social-links flex gap-4">
+                        <a href="#" class="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center hover:bg-blue-500 transition-all duration-300 hover:-translate-y-1 hover:scale-110">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center hover:bg-blue-500 transition-all duration-300 hover:-translate-y-1 hover:scale-110">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center hover:bg-blue-500 transition-all duration-300 hover:-translate-y-1 hover:scale-110">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center hover:bg-blue-500 transition-all duration-300 hover:-translate-y-1 hover:scale-110">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom text-center pt-8 border-t border-gray-700">
+                <p class="text-gray-400">&copy; 2025 TechStore. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
