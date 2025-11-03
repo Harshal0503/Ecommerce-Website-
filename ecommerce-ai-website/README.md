@@ -37,16 +37,6 @@ A modern, responsive e-commerce website built with vanilla HTML, CSS, and JavaSc
 - **Font Awesome**: Icon library for visual elements
 - **Google Fonts**: Inter font family for typography
 
-## 📁 Project Structure
-
-```
-ecommerce-ai-website/
-├── index.html          # Main HTML file
-├── styles.css          # CSS styles and animations
-├── script.js           # JavaScript functionality
-└── README.md          # Project documentation
-```
-
 ## 🚀 Getting Started
 
 ### Prerequisites
@@ -57,18 +47,7 @@ ecommerce-ai-website/
 
 1. **Clone or Download** the project files to your local machine
 
-2. **Open the Website**
-   - Simply open `index.html` in your web browser
-   - Or use a local server for development:
-     ```bash
-     # Using Python (if installed)
-     python -m http.server 8000
-     
-     # Using Node.js (if installed)
-     npx serve .
-     ```
-
-3. **Access the Website**
+2. **Access the Website**
    - Open your browser and navigate to `http://localhost:8000`
    - Or double-click `index.html` to open directly
 
@@ -92,73 +71,6 @@ ecommerce-ai-website/
 1. **Search Products**: Click the search icon in the header
 2. **Type Keywords**: Enter product names or categories
 3. **View Results**: Filtered products will appear automatically
-
-## 🎨 Customization
-
-### Adding New Products
-Edit the `products` array in `script.js`:
-
-```javascript
-const products = [
-    {
-        id: 7,
-        name: "Your Product Name",
-        description: "Short product description",
-        fullDescription: "Detailed product description with more information",
-        specs: [
-            "Specification 1",
-            "Specification 2",
-            "Specification 3"
-        ],
-        price: 299.99,
-        image: "fas fa-icon-name",  // Primary image (icon or file)
-        images: ["fas fa-icon-name", "fas fa-icon-2", "image3.png"],  // Multiple images for hover effect
-        colors: [
-            { name: "Black", code: "#000000" },
-            { name: "Silver", code: "#c0c0c0" },
-            { name: "Gold", code: "#ffd700" }
-        ],  // Color options with name and hex code
-        category: "category"
-    }
-];
-```
-
-**Notes**: 
-- The `images` array is optional. If provided, images will automatically cycle when you hover over the product.
-- The `colors` array is optional. Add color options with name and hex code for product customization.
-
-### Adding Your Own Images
-To add your own product images:
-
-1. **Place your image** in the root directory or `images/` folder (PNG, JPG, JPEG, GIF, or WEBP format)
-2. **Update the product** array in `script.js`:
-   ```javascript
-   {
-       id: 7,
-       name: "Product Name",
-       description: "Description",
-       price: 299.99,
-       image: "images/your-image.png",  // Single image
-       images: ["images/your-image.png", "images/angle-2.png", "images/angle-3.png"],  // Multiple images
-       category: "category"
-   }
-   ```
-3. **The system automatically detects** if you're using an image file or Font Awesome icon!
-4. **Multiple images** will automatically cycle when you hover over the product card
-
-**Supported image formats**: PNG, JPG, JPEG, GIF, WEBP
-
-### Modifying AI Responses
-Update the `aiResponses` object in `script.js` to customize chatbot responses:
-
-```javascript
-const aiResponses = {
-    greetings: ["Your custom greeting messages"],
-    products: {
-        category: "Your product information"
-    }
-};
-```
 
 ### Styling Customization
 - Modify colors in `styles.css` using CSS custom properties
@@ -272,4 +184,3 @@ For support or questions:
 
 **TechStore** - Your trusted partner in technology and innovation! 🚀
 
-Built with ❤️ using modern web technologies and AI-powered features.
